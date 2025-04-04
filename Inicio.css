@@ -1,0 +1,96 @@
+ .u-section-1 {
+  min-height: 685px;
+}
+
+.u-section-1 .u-video-1 {
+  height: 812px;
+  width: calc(((100% - 1140px) / 2)  + 1234px);
+  margin: -81px calc(((100% - 1140px) / 2)  + -94px) 0 auto;
+}
+
+.u-section-1 .u-custom-html-1 {
+  height: auto;
+  min-height: 285px;
+  margin: -530px calc(((100% - 1140px) / 2)  + -13px) 60px calc(((100% - 1140px) / 2)  + 13px);
+}
+
+@media (max-width: 1199px) {
+   .u-section-1 {
+    min-height: 592px;
+  }
+
+  .u-section-1 .u-video-1 {
+    width: 1305px;
+    height: 700px;
+    margin-top: -108px;
+    margin-right: auto;
+    margin-left: calc(((100% - 940px) / 2)  + -233px);
+  }
+
+  .u-section-1 .u-custom-html-1 {
+    min-height: 235px;
+    width: 940px;
+    margin-top: -426px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 991px) {
+   .u-section-1 {
+    min-height: 602px;
+  }
+
+  .u-section-1 .u-video-1 {
+    height: 780px;
+    width: 1203px;
+    margin-top: -125px;
+    margin-left: calc(((100% - 720px) / 2)  + -251px);
+  }
+
+  .u-section-1 .u-custom-html-1 {
+    width: 720px;
+    margin-top: -488px;
+    margin-right: calc(((100% - 720px) / 2)  + 13px);
+    margin-left: calc(((100% - 720px) / 2)  + -13px);
+  }
+}
+
+@media (max-width: 767px) {
+   .u-section-1 {
+    min-height: 715px;
+  }
+
+  .u-section-1 .u-video-1 {
+    height: 923px;
+    width: 1412px;
+    margin-top: -141px;
+    margin-left: calc(((100% - 540px) / 2)  + -515px);
+  }
+
+  .u-section-1 .u-custom-html-1 {
+    width: 540px;
+    margin-top: -522px;
+    margin-left: calc(((100% - 540px) / 2));
+    margin-right: calc(((100% - 540px) / 2));
+  }
+}
+
+@media (max-width: 575px) {
+   .u-section-1 {
+    min-height: 641px;
+  }
+
+  .u-section-1 .u-video-1 {
+    height: 916px;
+    width: 1245px;
+    margin-top: -166px;
+    margin-left: calc(((100% - 340px) / 2)  + -595px);
+  }
+
+  .u-section-1 .u-custom-html-1 {
+    min-height: 344px;
+    width: 585px;
+    margin: -508px calc(((100% - 340px) / 2)) 55px calc(((100% - 340px) / 2)  + -134px);
+  }
+}
