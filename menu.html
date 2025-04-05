@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Personalizado</title>
+    <link rel="stylesheet" href="CSS/menu.css">
+    <style>
+        @font-face {
+            font-family: 'D-DINf';
+            src: url('fonts/D-DINf.otf') format('truetype');
+            font-weight: 300;
+        }
+    </style>
+</head>
+<body>
+    <!-- Menú desktop (visible en pantallas grandes) -->
+    <nav class="menu-container">
+        <!-- Agrega este div para el logo -->
+        <div class="menu-logo">MAOL</div>
+        
+        <ul class="menu-list">
+            <li class="menu-item"><a href="portada.html" class="menu-link">Inicio</a></li>
+            <li class="menu-item"><a href="arquitectura.html" class="menu-link">Arquitectura</a></li>
+            <li class="menu-item"><a href="ingenieria.html" class="menu-link">Ingeniería</a></li>
+            <li class="menu-item"><a href="urbanismo.html" class="menu-link">Urbanismo</a></li>
+            <li class="menu-item"><a href="contacto.html" class="menu-link">Contacto</a></li>
+        </ul>
+    </nav>
+
+  <!-- Hamburguesa -->
+  <button class="hamburger" id="hamburger" aria-label="Menú">
+    <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+    </span>
+</button>
+
+    <!-- Menú móvil (solo visible en móviles) -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item"><a href="portada.html" class="mobile-menu-link">Inicio</a></li>
+            <li class="mobile-menu-item"><a href="arquitectura.html" class="mobile-menu-link">Arquitectura</a></li>
+            <li class="mobile-menu-item"><a href="ingenieria.html" class="mobile-menu-link">Ingeniería</a></li>
+            <li class="mobile-menu-item"><a href="ingenieria.html" class="mobile-menu-link">Urbanismo</a></li>
+            <li class="mobile-menu-item"><a href="contacto.html" class="mobile-menu-link">Contacto</a></li>
+
+            <li class="mobile-menu-logo">MAOL</li>
+        </ul>
+    </div>
+
+    <script src="js/menu.js"></script>
+</body>
+</html>
