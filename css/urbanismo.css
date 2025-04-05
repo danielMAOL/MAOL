@@ -1,0 +1,171 @@
+:root {
+    --margin-left: 100px; /* Márgen izquierdo general */
+    --margin-right: 100px; /* Márgen derecho general */
+    --text-spacing: 200px; /* Separación entre la imagen de portada y el texto */
+    --gallery-spacing: 200px; /* Separación entre el texto y la galería */
+    
+    /* Variables para el texto */
+    --text-font-size: 1rem;
+    --text-color: #333333;
+    --text-line-height: 1.8;
+    --text-max-width: 400px; /* Nuevo: Ancho máximo del texto */
+    
+    
+    /* Variables para imágenes */
+    --header-image-height: 80vh; /*altura para la primera imagen*/
+    --first-gallery-image-height: 400px;
+
+    /* ========== VARIABLES DE PIE DE PÁGINA ========== */
+    --footer-bg-color: #F2F2F2;
+    --footer-text-color: #474747;
+    --footer-font-size: 0.8rem;        /* Cambia este valor */
+    --footer-line-height: 1.4;         /* Cambia este valor */
+    --footer-padding-top: 2rem;        /* Cambia este valor */
+    --footer-padding-bottom: 2rem;     /* Cambia este valor */
+    --footer-margin-top: 5rem;         /* Separación con contenido superior */
+    --footer-bottom-margin: 1rem;      /* Margen inferior */
+    --footer-min-height: 120px;        /* Altura mínima */
+
+    /*menu*/
+    --menu-bg-color: #F2F2F2;
+    --menu-color: #1A1A1A;
+    --menu-hover-color: #C4DFAA;
+    --menu-active-color: #00ADA9;
+    --logo-color: #00ADA9;
+    
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'OpenSans-Regular', sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.header-image-container {
+    position: relative;
+    width: 100vw;
+    max-width: 100%;
+    overflow: hidden;
+    height: var(--header-image-height);
+}
+
+.header-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.description-container {
+    max-width: var(--text-max-width);
+    width: 90%;
+    margin: var(--text-spacing) auto var(--gallery-spacing) auto;
+    padding: 0 20px;
+}
+
+.description-container p {
+    font-family: 'OpenSans-Light', sans-serif;
+    font-size: var(--text-font-size);
+    color: var(--text-color);
+    line-height: var(--text-line-height);
+    text-align: left;
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: calc(100vw - var(--margin-left) - var(--margin-right));
+    max-width: 100%;
+    margin-bottom: 40px;
+    grid-template-areas:
+        "image1 image1 image1"
+        "image2 image3 image3"
+        "image4 image5 image6";
+}
+
+.gallery-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-container img:nth-child(1) {
+    grid-area: image1;
+    height: var(--first-gallery-image-height);
+    width: 100%;
+    object-fit: cover;
+}
+
+.gallery-container img:nth-child(2) {
+    grid-area: image2;
+}
+
+.gallery-container img:nth-child(3) {
+    grid-area: image3;
+}
+
+.gallery-container img:nth-child(4) {
+    grid-area: image4;
+}
+
+.gallery-container img:nth-child(5) {
+    grid-area: image5;
+}
+
+.gallery-container img:nth-child(6) {
+    grid-area: image6;
+}
+
+/* ===== FOOTER 100% CENTRADO Y FUNCIONAL ===== */
+.site-footer {
+    background-color: var(--footer-bg-color);
+    color: var(--footer-text-color);
+    width: 100%;
+    padding: var(--footer-padding-top) 0 var(--footer-padding-bottom);
+    margin: var(--footer-margin-top) 0 var(--footer-bottom-margin) 0;
+    display: grid;
+    place-items: center; /* Centrado perfecto */
+    min-height: var(--footer-min-height);
+    box-sizing: border-box;
+}
+
+.footer-content {
+    width: 100%;
+    max-width: var(--text-container-width);
+    text-align: center;
+}
+
+.footer-line {
+    font-family: 'OpenSans-Light', sans-serif;
+    font-size: var(--footer-font-size);
+    line-height: var(--footer-line-height);
+    margin: 0.3rem 0;
+    display: block;
+    width: 100%;
+}
+
+.footer-year {
+    font-family: 'OpenSans-Light', sans-serif;
+}
+
+.footer-logo {
+    font-family: 'Brushot-Bold', sans-serif;
+    font-weight: bold;
+}
+
+.footer-content a {
+    color: var(--footer-text-color);
+    text-decoration: none;
+    font-family: inherit;
+}

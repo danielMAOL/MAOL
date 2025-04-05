@@ -1,0 +1,448 @@
+/* ========== VARIABLES DE DISEÑO ========== */
+:root {
+    /* Efecto de carga mejorado (sin flash) */
+    --fade-in-duration: 1s;
+    --fade-in-delay: 0s;
+    --fade-in-start-bg: #000000;
+    --fade-in-end-bg: var(--background-color);
+
+    /*menu*/
+    --menu-bg-color: #F2F2F2;
+    --menu-color: #1A1A1A;
+    --menu-hover-color: #FF5F5D;
+    --menu-active-color: #a9a9a9;
+    --logo-color: #595959;
+
+    /* Configuración base texto*/
+    --font-size-normal: 1rem;
+    --line-height: 1.7;
+    --text-color: #373737;
+    --background-color: #E7E8E7;
+    
+    /* Títulos */
+    --title-font-size: 1rem;
+    --title-color: #373737;
+    --title-margin-top: 3rem;
+    --title-margin-bottom: 1.5rem;
+    --title-line-height: 1.5;
+    --title-alignment: left;
+    
+    /* Espaciados texto*/
+    --paragraph-spacing: 1rem;
+    --content-margin-top: 7rem;
+    --text-container-width: 700px;
+
+    /* Título sección de imágenes */
+    --featured-section-title-size: 1.5rem;
+    --featured-section-title-color: #373737;
+    --featured-section-title-margin-bottom: 2rem;
+
+    /* Sección imágenes */
+    --featured-section-gap: 30px;
+    --section-image-height: 350px;
+    --image-border-radius-top: 10px;
+    --section-image-ratio: 16/9;
+
+    /* Recuadros de texto - MODIFICADAS */
+    --text-box-bg: #F2F2F2;
+    --textbox-border-radius-bottom: 15px;
+    --text-box-min-height: 200px; /* Cambiado a min-height */
+    --text-box-max-lines: none; /* Eliminado límite de líneas */
+    --section-title-size: 1rem;
+    --section-title-color: #373737;
+    --section-text-size: 1rem;
+    --section-text-line-height: 1.7;
+    --title-to-text-spacing: 0rem;
+    --text-box-content-padding: 1rem 0; /* Nuevo: espaciado interno */
+
+    /* Margenes y padding */
+    --image-to-text-margin: 0rem;
+    --textbox-margin-sides: 0;
+    --textbox-padding-internal: 1rem 2rem; /*margen titulo - margen texto respecto al recuadro*/
+    
+    /* Full-width */
+    --full-width-margin: 5%;
+
+    /* Imágenes antes de títulos */
+    --title-image-margin-top: 1rem;
+    --title-image-margin-bottom: 1rem;
+    --title-image-ratio: 16/9;
+
+    /* Imagen panorámica inferior */
+    --panoramic-bottom-margin: 1rem;
+    --panoramic-bottom-title-size: 2.5rem;
+    --panoramic-bottom-title-color: #373737;
+    --panoramic-bottom-description-size: 1rem;
+    --panoramic-bottom-description-color: #373737;
+    --panoramic-bottom-text-margin: 2rem;
+
+    /* Pie de página */
+    --footer-bg-color: #E7E8E7;
+    --footer-text-color: #474747;
+    --footer-font-size: 0.8rem;
+    --footer-line-height: 1.4;
+    --footer-padding-top: 15rem;
+    --footer-padding-bottom: 1rem;
+    --footer-margin-top: 5rem;
+    --footer-bottom-margin: 0rem;
+    --footer-min-height: 50px;
+}
+
+/* ========== EFECTO DE CARGA ========== */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--fade-in-start-bg);
+    z-index: 9999;
+    pointer-events: none;
+    animation: fadeOut var(--fade-in-duration) ease-in var(--fade-in-delay) forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* ========== FUENTES ========== */
+@font-face {
+    font-family: 'OpenSans-Light';
+    src: url('../fonts/OpenSans-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'OpenSans-Bold';
+    src: url('../fonts/OpenSans-Bold.ttf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'D-DINf';
+    src: url('../fonts/D-DINf.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ========== ESTILOS GENERALES ========== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'OpenSans-Light', sans-serif;
+    font-weight: 300;
+    line-height: var(--line-height);
+    color: var(--text-color);
+    background-color: var(--fade-in-start-bg);
+    animation: bodyFadeIn var(--fade-in-duration) ease-in var(--fade-in-delay) forwards;
+}
+
+@keyframes bodyFadeIn {
+    to { background-color: var(--fade-in-end-bg); }
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--fade-in-start-bg);
+    z-index: 9999;
+    pointer-events: none;
+    animation: overlayFadeOut var(--fade-in-duration) ease-in var(--fade-in-delay) forwards;
+}
+
+@keyframes overlayFadeOut {
+    to { opacity: 0; }
+}
+
+/* ========== IMAGEN PANORÁMICA ========== */
+.panoramic-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.panoramic-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 16/6;
+}
+
+/* ========== IMAGEN PANORÁMICA INFERIOR ========== */
+.panoramic-bottom-container {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin: var(--panoramic-bottom-margin) 0 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.panoramic-bottom-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 16/6;
+    border-radius: var(--image-border-radius-top);
+    margin-top: var(--panoramic-bottom-text-margin);
+}
+
+.panoramic-bottom-text {
+    width: 100%;
+    padding-right: 0;
+    text-align: left;
+}
+
+.panoramic-bottom-title {
+    font-size: var(--panoramic-bottom-title-size);
+    color: var(--panoramic-bottom-title-color);
+    margin-bottom: 0.5rem;
+}
+
+.panoramic-bottom-description {
+    font-size: var(--panoramic-bottom-description-size);
+    color: var(--panoramic-bottom-description-color);
+    text-align: justify;
+}
+
+/* ========== CONTENIDO PRINCIPAL ========== */
+.content {
+    max-width: var(--text-container-width);
+    margin: var(--content-margin-top) auto;
+    padding: 0 2rem;
+    text-align: left;
+}
+
+/* ========== TÍTULOS ========== */
+h1, h2, h3 {
+    font-family: 'OpenSans-Bold', sans-serif;
+    font-weight: 700;
+    font-size: var(--title-font-size);
+    color: var(--title-color);
+    margin: var(--title-margin-top) 0 var(--title-margin-bottom) 0;
+    line-height: var(--title-line-height);
+    text-align: var(--title-alignment);
+}
+
+/* ========== PÁRRAFOS ========== */
+p {
+    margin-bottom: var(--paragraph-spacing);
+    font-size: var(--font-size-normal);
+    text-align: left;
+}
+
+/* ========== SECCIÓN FULL WIDTH ========== */
+.full-width-section {
+    width: 100%;
+    padding: 0 var(--full-width-margin);
+    box-sizing: border-box;
+    margin: 5rem 0;
+}
+
+/* ========== TÍTULO SECCIÓN IMÁGENES ========== */
+.featured-section-title {
+    font-size: var(--featured-section-title-size);
+    color: var(--featured-section-title-color);
+    margin-bottom: var(--featured-section-title-margin-bottom);
+    text-align: left;
+}
+
+/* ========== SECCIÓN IMÁGENES ========== */
+.featured-sections {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--featured-section-gap);
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    box-sizing: border-box;
+}
+
+.featured-section {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--image-to-text-margin);
+}
+
+.section-image-container {
+    width: 100%;
+    height: var(--section-image-height);
+    overflow: hidden;
+    border-radius: var(--image-border-radius-top) var(--image-border-radius-top) 0 0;
+}
+
+.section-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.section-image:hover {
+    transform: scale(1.02);
+}
+
+/* ========== RECUADROS DE TEXTO (MODIFICADO) ========== */
+.text-box {
+    background-color: var(--text-box-bg);
+    padding: var(--textbox-padding-internal);
+    margin: 0 var(--textbox-margin-sides);
+    border-radius: 0 0 var(--textbox-border-radius-bottom) var(--textbox-border-radius-bottom);
+    min-height: var(--text-box-min-height);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.text-box-content {
+    flex: 1;
+    overflow: visible;
+    padding: var(--text-box-content-padding);
+    display: flex;
+    flex-direction: column;
+}
+
+.text-box h3 {
+    font-family: 'OpenSans-Bold', sans-serif;
+    font-weight: 700;
+    font-size: var(--section-title-size);
+    color: var(--section-title-color);
+    margin-bottom: var(--title-to-text-spacing);
+    margin-top: 0;
+    flex-shrink: 0;
+}
+
+.text-box-content p {
+    font-size: var(--section-text-size);
+    line-height: var(--section-text-line-height);
+    margin: 0;
+    flex: 1;
+}
+
+/* ========== PIE DE PÁGINA ========== */
+.site-footer {
+    background-color: var(--footer-bg-color);
+    color: var(--footer-text-color);
+    width: 100%;
+    padding: var(--footer-padding-top) 0 var(--footer-padding-bottom);
+    margin: var(--footer-margin-top) 0 var(--footer-bottom-margin) 0;
+    display: grid;
+    place-items: center;
+    min-height: var(--footer-min-height);
+    box-sizing: border-box;
+}
+
+.footer-content {
+    width: 100%;
+    max-width: var(--text-container-width);
+    text-align: center;
+}
+
+.footer-line {
+    font-family: 'OpenSans-Light', sans-serif;
+    font-size: var(--footer-font-size);
+    line-height: var(--footer-line-height);
+    margin: 0.3rem 0;
+    display: block;
+    width: 100%;
+}
+
+.footer-year {
+    font-family: 'OpenSans-Light', sans-serif;
+}
+
+.footer-logo {
+    font-family: 'Brushot-Bold', sans-serif;
+    font-weight: bold;
+}
+
+.footer-content a {
+    color: var(--footer-text-color);
+    text-decoration: none;
+    font-family: inherit;
+}
+
+/* ========== IMÁGENES ANTES DE TÍTULOS ========== */
+.title-image-container {
+    width: 100%;
+    margin: var(--title-image-margin-top) 0 var(--title-image-margin-bottom) 0;
+}
+
+.title-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: var(--title-image-ratio);
+}
+
+.title-image-container + h2,
+.title-image-container + h3 {
+    margin-top: 0 !important;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1200px) {
+    .featured-sections {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --font-size-normal: 1rem;
+        --paragraph-spacing: 1.2rem;
+        --title-font-size: 1.3rem;
+        --title-margin-top: 1.5rem;
+        --title-margin-bottom: 0.8rem;
+        --content-margin-top: 1.5rem;
+        --text-container-width: 90%;
+        --featured-section-gap: 2rem;
+        --section-image-height: 200px;
+        --textbox-padding-internal: 0.8rem 1.5rem;
+        --full-width-margin: 5%;
+        --text-box-min-height: auto;
+        --image-border-radius-top: 8px;
+        --textbox-border-radius-bottom: 10px;
+        --title-image-margin-top: 2rem;
+        --title-image-margin-bottom: 0.8rem;
+        --panoramic-bottom-margin: 2rem;
+        --title-to-text-spacing: 0.5rem;
+    }
+    
+    .panoramic-image {
+        aspect-ratio: 16/9;
+    }
+    
+    .content {
+        padding: 0 1.5rem;
+    }
+
+    .featured-sections {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 0 1rem;
+    }
+
+    .featured-section {
+        margin-bottom: 2rem;
+    }
+
+    .text-box {
+        min-height: unset;
+    }
+}

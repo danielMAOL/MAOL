@@ -1,0 +1,475 @@
+/* css/ingenieria.css */
+@font-face {
+    font-family: 'Brushshot-Bold';
+    src: url('../fonts/Brushshot-Bold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'OpenSans-Regular';
+    src: url('../fonts/OpenSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'OpenSans-Bold';
+    src: url('../fonts/OpenSans-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'OpenSans-Light';
+    src: url('../fonts/OpenSans-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'D-DINf';
+    src: url('../fonts/D-DINf.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'D-DIN-Bold';
+    src: url('../fonts/D-DIN-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    /* Fuente global */
+    --fuente-principal: 'D-DINf', sans-serif;
+    
+    /* Variables para PORTADA */
+    --portada-margen-superior: 35vh;
+    --portada-titulo-tamano: 3rem;
+    --portada-titulo-color: #282828;
+    --portada-titulo-fuente: 'D-DIN-Bold', sans-serif;
+    --portada-interlineado: 1.3; /* Nueva variable para interlineado */
+    
+    /* Variables para PRIMERA SECCIÓN PRESENTACIÓN */
+    --presentacion-titulo-tamano: 3rem;
+    --presentacion-titulo-color: #ffffff;
+    --presentacion-titulo-fuente: 'D-DIN-Bold', sans-serif;
+    --presentacion-texto-tamano: 1.1rem;
+    --presentacion-texto-color: #ffffff;
+    --presentacion-margen-superior: 350px;
+    --presentacion-margen-izquierdo: 70px;
+    --presentacion-ancho-maximo: 600px;
+    --presentacion-interlineado: 1.4; /* Nueva variable para interlineado */
+    
+    /* Variables para SEGUNDA SECCIÓN (MAOL) */
+    --maol-titulo-tamano: 3rem;
+    --maol-titulo-color: #ffffff;
+    --maol-titulo-fuente: 'D-DIN-Bold', sans-serif;
+    --maol-titulo-interlineado: 1.2; /* Nueva variable específica para título */
+    --maol-texto-tamano: 1.1rem;
+    --maol-texto-color: #ffffff;
+    --maol-texto-interlineado: 1.4; /* Variable para texto (existente) */
+    --maol-margen-superior: 350px;
+    --maol-margen-izquierdo: 70px;
+    --maol-ancho-maximo: 600px;
+    
+    /* -----Variables para TERCERA SECCIÓN (SERVICIOS) -------------------*/
+    /* Nuevas variables para la retícula completa */
+    --servicios-celda-padding: 20px;
+    --servicios-celda-gap: 1px;
+    --servicios-imagen-altura: 50vh;
+    --servicios-texto-altura: calc(100vh - 50vh);
+    
+    /* ESTILOS PARA TÍTULOS */
+    --servicios-titulo-size: 1.8rem;
+    --servicios-titulo-color: #FFFFFF;
+    --servicios-titulo-margin-top: 15px;
+    --servicios-titulo-margin-left: 20px;
+    --servicios-titulo-interlineado: 1.2; /* Nueva específica para títulos */
+    
+    /* ESTILOS PARA TEXTOS */
+    --servicios-texto-size: 1rem;
+    --servicios-texto-color: #FFFFFF;
+    --servicios-texto-margin-top: 10px;
+    --servicios-texto-margin-left: 20px;
+    --servicios-texto-interlineado: 1.4; /* Única variable para interlineado de texto */
+    
+    /*---------- Variables para CUARTA SECCIÓN (BIM) -------*/
+    --bim-titulo-tamano: 3rem;
+    --bim-titulo-color: #ffffff;
+    --bim-titulo-fuente: 'D-DIN-Bold', sans-serif;
+    --bim-texto-tamano: 1.1rem;
+    --bim-texto-color: #ffffff;
+    --bim-margen-superior: 350px;
+    --bim-margen-izquierdo: 70px;
+    --bim-ancho-maximo: 600px;
+    --bim-interlineado: 1.4; /* Nueva variable para interlineado */
+    
+    /* Variables para QUINTA SECCIÓN (RA) */
+    --ra-titulo-tamano: 3rem;
+    --ra-titulo-color: #ffffff;
+    --ra-titulo-fuente: 'D-DIN-Bold', sans-serif;
+    --ra-texto-tamano: 1.1rem;
+    --ra-texto-color: #ffffff;
+    --ra-margen-superior: 350px;
+    --ra-margen-izquierdo: 70px;
+    --ra-ancho-maximo: 600px;
+    --ra-interlineado: 1.4; /* Nueva variable para interlineado */
+
+
+ /* Variables para animaciones */
+ --animacion-distancia-inicial: 50px; /* Controla qué tan abajo comienza el elemento */
+ --animacion-duracion: 0.8s; /* Controla la duración de la animación */
+ --animacion-retardo: 0.1s; /* Controla el retardo entre elementos */
+
+}
+
+
+
+/* Eliminar márgenes y rellenos por defecto */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Asegurar que el body y el html ocupen todo el espacio disponible */
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+}
+
+/* ----------------- PORTADA ----------------- */
+.portada-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.portada-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.texto-portada {
+    position: absolute;
+    top: var(--portada-margen-superior);
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.titulo {
+    font-size: var(--portada-titulo-tamano);
+    color: var(--portada-titulo-color);
+    font-family: var(--portada-titulo-fuente);
+}
+
+/* ----------------- PRIMERA SECCIÓN PRESENTACIÓN ----------------- */
+.presentacion-seccion {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.presentacion-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.presentacion-texto {
+    position: absolute;
+    top: var(--presentacion-margen-superior);
+    left: var(--presentacion-margen-izquierdo);
+    color: var(--presentacion-texto-color);
+    font-family: var(--fuente-principal);
+    max-width: var(--presentacion-ancho-maximo);
+    
+}
+
+.presentacion-titulo {
+    font-size: var(--presentacion-titulo-tamano);
+    color: var(--presentacion-titulo-color);
+    margin-bottom: 20px;
+    font-family: var(--presentacion-titulo-fuente);
+    line-height: var(--presentacion-interlineado);
+}
+
+.presentacion-descripcion {
+    font-size: var(--presentacion-texto-tamano);
+    color: var(--presentacion-texto-color);
+    line-height: var(--presentacion-interlineado); /* Aplicado al texto */
+}
+
+/* ----------------- SEGUNDA SECCIÓN (MAOL) ----------------- */
+.maol-seccion {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.maol-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.maol-texto {
+    position: absolute;
+    top: var(--maol-margen-superior);
+    left: var(--maol-margen-izquierdo);
+    color: var(--maol-texto-color);
+    font-family: var(--fuente-principal);
+    max-width: var(--maol-ancho-maximo);
+}
+
+.maol-titulo {
+    font-size: var(--maol-titulo-tamano);
+    color: var(--maol-titulo-color);
+    margin-bottom: 20px;
+    font-family: var(--maol-titulo-fuente);
+    line-height: var(--maol-titulo-interlineado)
+}
+
+.maol-descripcion {
+    font-size: var(--maol-texto-tamano);
+    color: var(--maol-texto-color);
+    line-height: var(--maol-texto-interlineado);
+}
+
+/* ----------------- TERCERA SECCIÓN (SERVICIOS) ----------------- */
+.servicios-seccion {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.servicios-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* Contenedor principal de la retícula */
+.servicios-grid-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+/* Filas (arriba y abajo) */
+.servicios-fila {
+    display: flex;
+    width: 100%;
+    height: 50%; /* Cada fila ocupa la mitad de la altura */
+}
+
+/* Celdas individuales */
+.servicios-celda {
+    flex: 1; /* Ocupa espacio igualitario */
+    position: relative;
+    padding: var(--servicios-celda-padding);
+    border: var(--servicios-celda-gap) solid rgba(255,255,255,0.1); /* Medianil */
+    box-sizing: border-box;
+}
+
+/* Estilos específicos para fila de imágenes */
+.servicios-fila-imagenes .servicios-celda {
+    height: var(--servicios-imagen-altura);
+}
+
+/* Estilos específicos para fila de textos */
+.servicios-fila-textos .servicios-celda {
+    height: var(--servicios-texto-altura);
+    background-color: rgba(0,0,0,0.3); /* Fondo semitransparente para mejor legibilidad */
+}
+
+/* Imágenes dentro de las celdas */
+.servicios-imagen-celda {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Textos dentro de las celdas */
+.servicios-titulo-celda {
+    font-size: var(--servicios-titulo-size);
+    color: var(--servicios-titulo-color);
+    font-family: var(--servicios-titulo-fuente);
+    margin-top: var(--servicios-titulo-margin-top);
+    margin-left: var(--servicios-titulo-margin-left);
+}
+
+.servicios-texto-celda {
+    font-size: var(--servicios-texto-size);
+    color: var(--servicios-texto-color);
+    font-family: var(--fuente-principal);
+    margin-top: var(--servicios-texto-margin-top);
+    margin-left: var(--servicios-texto-margin-left);
+    line-height: var(--servicios-texto-interlineado);
+}
+
+/* ----------------- CUARTA SECCIÓN (BIM) ----------------- */
+.bim-seccion {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.bim-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.bim-texto {
+    position: absolute;
+    top: var(--bim-margen-superior);
+    left: var(--bim-margen-izquierdo);
+    color: var(--bim-texto-color);
+    font-family: var(--fuente-principal);
+    max-width: var(--bim-ancho-maximo);
+}
+
+.bim-titulo {
+    font-size: var(--bim-titulo-tamano);
+    color: var(--bim-titulo-color);
+    margin-bottom: 20px;
+    font-family: var(--bim-titulo-fuente);
+    line-height: var(--bim-interlineado);
+}
+
+.bim-descripcion {
+    font-size: var(--bim-texto-tamano);
+    color: var(--bim-texto-color);
+    line-height: var(--bim-interlineado);
+}
+
+/* ----------------- QUINTA SECCIÓN (RA) ----------------- */
+.ra-seccion {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.ra-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.ra-texto {
+    position: absolute;
+    top: var(--ra-margen-superior);
+    left: var(--ra-margen-izquierdo);
+    color: var(--ra-texto-color);
+    font-family: var(--fuente-principal);
+    max-width: var(--ra-ancho-maximo);
+}
+
+.ra-titulo {
+    font-size: var(--ra-titulo-tamano);
+    color: var(--ra-titulo-color);
+    margin-bottom: 20px;
+    font-family: var(--ra-titulo-fuente);
+    line-height: var(--ra-interlineado);
+}
+
+.ra-descripcion {
+    font-size: var(--ra-texto-tamano);
+    color: var(--ra-texto-color);
+    line-height: var(--ra-interlineado);
+}
+
+/* ----------------- ANIMACIONES ----------------- */
+/* Agregar esto AL FINAL de tu archivo CSS, después de todas las demás reglas */
+
+/* Clase base para elementos animables */
+.animar-entrada {
+    opacity: 0;
+    transform: translateY(var(--animacion-distancia-inicial));
+    transition: 
+        opacity var(--animacion-duracion) ease-out,
+        transform var(--animacion-duracion) ease-out;
+}
+
+/* Clase que activa la animación cuando el elemento es visible */
+.animar-entrada.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Aplicar animación a todos los títulos y textos */
+.titulo,
+.presentacion-titulo,
+.presentacion-descripcion,
+.maol-titulo,
+.maol-descripcion,
+.servicios-titulo-celda,
+.servicios-texto-celda,
+.bim-titulo,
+.bim-descripcion,
+.ra-titulo,
+.ra-descripcion {
+    opacity: 0;
+    transform: translateY(var(--animacion-distancia-inicial));
+    transition: 
+        opacity var(--animacion-duracion) ease-out,
+        transform var(--animacion-duracion) ease-out;
+}
+
+/* Versión visible */
+.titulo.visible,
+.presentacion-titulo.visible,
+.presentacion-descripcion.visible,
+.maol-titulo.visible,
+.maol-descripcion.visible,
+.servicios-titulo-celda.visible,
+.servicios-texto-celda.visible,
+.bim-titulo.visible,
+.bim-descripcion.visible,
+.ra-titulo.visible,
+.ra-descripcion.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Retardo progresivo para elementos en grid */
+.servicios-fila-textos .servicios-celda:nth-child(1) .servicios-titulo-celda,
+.servicios-fila-textos .servicios-celda:nth-child(1) .servicios-texto-celda {
+    transition-delay: calc(var(--animacion-retardo) * 1);
+}
+
+.servicios-fila-textos .servicios-celda:nth-child(2) .servicios-titulo-celda,
+.servicios-fila-textos .servicios-celda:nth-child(2) .servicios-texto-celda {
+    transition-delay: calc(var(--animacion-retardo) * 2);
+}
+
+.servicios-fila-textos .servicios-celda:nth-child(3) .servicios-titulo-celda,
+.servicios-fila-textos .servicios-celda:nth-child(3) .servicios-texto-celda {
+    transition-delay: calc(var(--animacion-retardo) * 3);
+}
