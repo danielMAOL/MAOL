@@ -503,4 +503,19 @@ html, body {
       padding: 10px;
     }
   }
+/* Imágenes generales responsivas */
+
+.portada-img,
+.presentacion-imagen,
+.maol-imagen,
+.servicios-imagen,
+.bim-imagen,
+.ra-imagen {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
   
