@@ -136,6 +136,7 @@
     window.addEventListener('load', function() {
       const canvas = document.getElementById('archCanvas');
       const ctx = canvas.getContext('2d');
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
       function setCanvasSize() {
         canvas.width = window.innerWidth;
@@ -143,30 +144,41 @@
       }
       setCanvasSize();
 
+      // Configuración ajustada para móviles
       const config = {
-        lineColor: '#333333',
-        lineWidth: 1.5,
+        lineWidth: isMobile ? 1 : 1.5,
         opacity: 0.7,
         shapes: [],
-        shapeCount: 8,
-        speed: 0.5
+        shapeCount: isMobile ? 6 : 8, // Menos formas en móviles
+        speed: isMobile ? 0.1 : 0.2,  // Más lento en móviles
+        colors: [
+          '#FF6B6B', '#4ECDC4', '#45B7D1', '#FFBE0B',
+          '#FB5607', '#8338EC', '#3A86FF', '#FF006E'
+        ]
       };
 
       class Shape {
         constructor() {
           this.reset();
-          this.size = 100 + Math.random() * 150;
+          this.size = isMobile ? (80 + Math.random() * 100) : (100 + Math.random() * 150);
+          this.color = config.colors[Math.floor(Math.random() * config.colors.length)];
         }
         reset() {
           this.x = Math.random() * canvas.width;
           this.y = Math.random() * canvas.height;
           this.z = Math.random() * 600;
           this.rot = Math.random() * Math.PI * 2;
+          // Velocidad de rotación más lenta, especialmente en móviles
+          this.rotSpeed = (isMobile ? 0.001 : 0.002) + Math.random() * (isMobile ? 0.002 : 0.003);
         }
         update() {
-          this.rot += config.speed * 0.01;
+          this.rot += this.rotSpeed;
           this.z -= config.speed;
-          if (this.z < -200) this.reset();
+          if (this.z < -200) {
+            this.reset();
+            // Al resetear, colocar la forma más atrás para mayor suavidad
+            this.z = 600 + Math.random() * 200;
+          }
         }
         draw() {
           const s = this.size;
@@ -196,9 +208,10 @@
             const px2 = this.x + x2 * scale2;
             const py2 = this.y + v2.y * scale2;
 
-            ctx.strokeStyle = config.lineColor;
+            ctx.strokeStyle = this.color;
             ctx.lineWidth = config.lineWidth;
-            ctx.globalAlpha = Math.min(scale1, scale2) * config.opacity;
+            // Opacidad más suave
+            ctx.globalAlpha = Math.min(scale1, scale2) * config.opacity * 0.8;
             ctx.beginPath();
             ctx.moveTo(px1, py1);
             ctx.lineTo(px2, py2);
@@ -213,12 +226,28 @@
 
       function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#f5f5f5';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Ordenar formas por profundidad para mejor renderizado
+        config.shapes.sort((a, b) => b.z - a.z);
+        
         config.shapes.forEach(shape => {
           shape.update();
           shape.draw();
         });
-        requestAnimationFrame(animate);
+        
+        // Usar requestAnimationFrame con throttling en móviles si es necesario
+        if (isMobile) {
+          setTimeout(() => {
+            requestAnimationFrame(animate);
+          }, 30); // Pequeño retardo para móviles
+        } else {
+          requestAnimationFrame(animate);
+        }
       }
+      
+      // Iniciar animación
       animate();
     });
   </script>
