@@ -107,4 +107,3 @@ window.addEventListener('load', function () {
 
   animate();
 });
-
