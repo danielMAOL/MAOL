@@ -81,7 +81,7 @@
 </head>
 <body>
   <h1>Hola</h1>
-  <form id="contactForm">
+  <form action="https://formspree.io/f/myzeokzj" method="POST">
     <label for="nombre">Nombre:</label>
     <input type="text" id="nombre" name="nombre" required>
 
@@ -90,8 +90,6 @@
 
     <label for="mensaje">Mensaje:</label>
     <textarea id="mensaje" name="mensaje" required></textarea>
-
-    <div class="g-recaptcha" data-sitekey="6Lf24BQrAAAAAK4W5Za2FfuwsB26UXvdRu-69xlt"></div>
 
     <button type="submit">Enviar</button>
   </form>
@@ -208,6 +206,6 @@
       animate();
     });
   </script>
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 </body>
 </html>
